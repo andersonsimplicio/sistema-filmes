@@ -21,7 +21,7 @@ public class Episodio {
             this.avaliacao = 0.0;
         }
         try {
-            this.dataLancamento = LocalDate.parse(dadosEpisodio.dataLancamento);
+            this.dataLancamento = LocalDate.parse(dadosEpisodio.datgit aLancamento);
         } catch (DateTimeParseException ex) {
             this.dataLancamento = null;
         }
