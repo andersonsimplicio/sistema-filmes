@@ -1,11 +1,15 @@
 package br.edu.poli.screenmatch;
 
+import br.edu.poli.screenmatch.Principal.Principal;
 import br.edu.poli.screenmatch.model.ConverteDados;
+import br.edu.poli.screenmatch.model.DadosEpisodios;
 import br.edu.poli.screenmatch.model.DadosSeries;
+import br.edu.poli.screenmatch.model.DadosTemporada;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import br.edu.poli.screenmatch.service.ConsumoApi;
+import java.util.ArrayList;
 
 @SpringBootApplication
 public class ScreenmatchApplication implements CommandLineRunner {
@@ -17,13 +21,9 @@ public class ScreenmatchApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        var consumoApi = new ConsumoApi();
-        var json = consumoApi.obterDados("http://www.omdbapi.com/?t=the+office&apikey=b5b37f47");
-        System.out.println(json);
+        Principal menu = new Principal();
+        menu.exibeMenu();
 
-        var converte = new ConverteDados();
-        var dadosSeries = converte.obterDados(json,DadosSeries.class);
-        System.out.println(dadosSeries);
 
         //json = consumoApi.obterDados("https://coffee.alexflipnote.dev/random.json");
         //System.out.println(json);
