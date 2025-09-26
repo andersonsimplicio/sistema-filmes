@@ -1,15 +1,10 @@
 package br.edu.poli.screenmatch;
 
 import br.edu.poli.screenmatch.Principal.Principal;
-import br.edu.poli.screenmatch.model.ConverteDados;
-import br.edu.poli.screenmatch.model.DadosEpisodios;
-import br.edu.poli.screenmatch.model.DadosSeries;
-import br.edu.poli.screenmatch.model.DadosTemporada;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import br.edu.poli.screenmatch.service.ConsumoApi;
-import java.util.ArrayList;
+
 
 @SpringBootApplication
 public class ScreenmatchApplication implements CommandLineRunner {

@@ -1,9 +1,6 @@
 package br.edu.poli.screenmatch.Principal;
 
-import br.edu.poli.screenmatch.model.ConverteDados;
-import br.edu.poli.screenmatch.model.DadosEpisodios;
-import br.edu.poli.screenmatch.model.DadosSeries;
-import br.edu.poli.screenmatch.model.DadosTemporada;
+import br.edu.poli.screenmatch.model.*;
 import br.edu.poli.screenmatch.service.ConsumoApi;
 
 import java.util.ArrayList;
@@ -60,6 +57,12 @@ public class Principal {
                         .limit(5)
                         .collect(Collectors.toList());
         listaEpisodios.forEach(e->System.out.println(e.titulo()+" "+e.avaliacao()));
+
+        List<Episodio> episodios = temporadas.stream()
+                .flatMap(t -> t.episodios().stream()
+                        .map(d -> new Episodio(t.numero(), d))
+                ).collect(Collectors.toList());
+        episodios.forEach(System.out.println);
 
     }
 }
