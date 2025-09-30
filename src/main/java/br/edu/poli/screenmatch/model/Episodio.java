@@ -14,17 +14,18 @@ public class Episodio {
         this.temporada = numeroTemporada;
         this.titulo = dadosEpisodio.titulo();
         this.numeroEpisodio = dadosEpisodio.numero();
-
-        try {
+        try{
             this.avaliacao = Double.valueOf(dadosEpisodio.avaliacao());
-        } catch (NumberFormatException ex) {
+
+        }catch (NumberFormatException e) {
             this.avaliacao = 0.0;
         }
-        try {
-            this.dataLancamento = LocalDate.parse(dadosEpisodio.datgit aLancamento);
-        } catch (DateTimeParseException ex) {
+        try{
+            this.dataLancamento = LocalDate.parse(dadosEpisodio.dataLancamento());
+        }catch (DateTimeParseException e){
             this.dataLancamento = null;
         }
+
     }
     public Integer getTemporada() {
         return temporada;
@@ -72,8 +73,7 @@ public class Episodio {
                 ", titulo='" + titulo + '\'' +
                 ", numeroEpisodio=" + numeroEpisodio +
                 ", avaliacao=" + avaliacao +
-                ", dataLancamento=" + dataLancamento +
+                ", dataLancamento=" + dataLancamento;
 
     }
-}
 }

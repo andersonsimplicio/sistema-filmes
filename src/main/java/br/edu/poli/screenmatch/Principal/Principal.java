@@ -59,10 +59,10 @@ public class Principal {
         listaEpisodios.forEach(e->System.out.println(e.titulo()+" "+e.avaliacao()));
 
         List<Episodio> episodios = temporadas.stream()
-                .flatMap(t -> t.episodios().stream()
-                        .map(d -> new Episodio(t.numero(), d))
-                ).collect(Collectors.toList());
-        episodios.forEach(System.out.println);
+                .flatMap(t -> t.listaEpisodios().stream()
+                        .map(d -> new Episodio(t.numero(), d)))
+                .collect(Collectors.toList());
+        episodios.forEach(System.out::println);
 
     }
 }
