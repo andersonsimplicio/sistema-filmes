@@ -3,6 +3,8 @@ package br.edu.poli.screenmatch.Principal;
 import br.edu.poli.screenmatch.model.*;
 import br.edu.poli.screenmatch.service.ConsumoApi;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -20,7 +22,9 @@ public class Principal {
         Scanner leitura = new Scanner(System.in); // crie uma vez; feche no final da app, se desejar
         System.out.print("Digite o nome da série para a busca: ");
         String nomeSerie = leitura.nextLine();
-
+        var ano = 0;
+        LocalDate dataBusca;
+        DateTimeFormatter formData = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         // Codifica corretamente o termo de busca
         String titulo = URLEncoder.encode(nomeSerie, StandardCharsets.UTF_8);
 
@@ -49,6 +53,7 @@ public class Principal {
             temporadas.add(dadosTemporada);
         }
         //temporadas.forEach(System.out::println);
+
         List<DadosEpisodios> listaEpisodios =
                 temporadas.stream()
                         .flatMap(t->t.listaEpisodios().stream())
@@ -58,11 +63,26 @@ public class Principal {
                         .collect(Collectors.toList());
         listaEpisodios.forEach(e->System.out.println(e.titulo()+" "+e.avaliacao()));
 
+         /*
         List<Episodio> episodios = temporadas.stream()
                 .flatMap(t -> t.listaEpisodios().stream()
                         .map(d -> new Episodio(t.numero(), d)))
                 .collect(Collectors.toList());
+
+
         episodios.forEach(System.out::println);
+
+        System.out.print("A partir de que ano você deseja ver os episódios? ");
+        ano = leitura.nextInt();
+        dataBusca = LocalDate.of(ano,1,1);
+        episodios.stream()
+                .filter(e -> e.getDataLancamento() != null && e.getDataLancamento().isAfter(dataBusca))
+                .forEach(e-> System.out.println(
+                        "Temporada "+e.getTemporada()+
+                        "Episodio: "+ e.getTitulo()+
+                                "Data de Lançamento "+ e.getDataLancamento().format(formData)
+                ));
+                */
 
     }
 }
