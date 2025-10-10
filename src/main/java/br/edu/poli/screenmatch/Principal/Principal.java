@@ -53,14 +53,17 @@ public class Principal {
             temporadas.add(dadosTemporada);
         }
         //temporadas.forEach(System.out::println);
-
+        System.out.println("Top 10 episódios masi bem avaliados");
         List<DadosEpisodios> listaEpisodios =
                 temporadas.stream()
                         .flatMap(t->t.listaEpisodios().stream())
+                        .sorted(Comparator.comparing(DadosEpisodios::avaliacao).reversed()
+                                 .collect(Collectors.toList());
+        listaEpisodios.stream()
                         .filter(e->!e.avaliacao().equals("N/A"))
                         .sorted(Comparator.comparing(DadosEpisodios::avaliacao).reversed())
-                        .limit(5)
-                        .collect(Collectors.toList());
+                        .limit(10)
+                        .collect(Collectors.toList());      .
         listaEpisodios.forEach(e->System.out.println(e.titulo()+" "+e.avaliacao()));
 
          /*
