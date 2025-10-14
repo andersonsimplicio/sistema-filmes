@@ -8,6 +8,6 @@ import java.util.ArrayList;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DadosTemporada(
         @JsonAlias("Season")Integer numero,
-        @JsonAlias("Episodes") ArrayList<DadosEpisodios> listaEpisodios
+        @JsonAlias("Episodes") ArrayList<DadosEpisodio> episodios
 ) {
 }
